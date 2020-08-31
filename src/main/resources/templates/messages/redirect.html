@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <!-- For adding Bootstrap in you HTML file -->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <script defer th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script defer th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <!-- Redirect to form after update or delete 1 sec -->
+    <meta http-equiv="refresh" content="1; url=/student" />
+
+    <title>Message</title>
+
+</head>
+<body>
+<!-- Navigation -->
+<div class="container">
+    <nav th:replace = "navbar.html :: navigation" ></nav>
+</div>
+<br>
+<div class="container h-100 d-flex justify-content-center">
+    <div class="jumbotron my-auto">
+        <h1 class="display-5">Student has been removed from database</h1>
+        <br>
+        <!-- Add a add employee button -->
+        <a th:href="@{/student}"
+           class="btn btn-outline-primary btn-sm mb-3 h-50 d-flex justify-content-center">
+            Back to studentlist
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    <footer th:replace = "footer.html :: footer"></footer>
+</div>
+</body>
+</html>

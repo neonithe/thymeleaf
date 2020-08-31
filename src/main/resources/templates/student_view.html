@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <!-- For adding Bootstrap in you HTML file -->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <script defer th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script defer th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <title>Student database</title>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="container">
+    <nav th:replace = "navbar.html :: navigation" ></nav>
+</div>
+    <br>
+    <!-- Content of web page -->
+    <div class="container">
+        <h2>Student database</h2>
+        <div>
+            <!-- Add a add student button -->
+            <a th:href="@{/student/form}"
+               class="btn btn-outline-primary btn-sm mb-3 float-left">
+                Add Student
+            </a>
+            <!-- Add a sort name Asc button -->
+            <a th:href="@{/student/sortNameAsc}"
+               class="btn btn-outline-primary btn-sm mb-3  float-right">
+                Sort name Ascending
+            </a>
+            <!-- Add a sort name Desc button -->
+            <a th:href="@{/student/sortNameDesc}"
+               class="btn btn-outline-primary btn-sm mb-3 mr-3 float-right">
+                Sort name Descending
+            </a>
+            <!-- Add a reset button -->
+            <a th:href="@{/student/sortId}"
+               class="btn btn-outline-primary btn-sm mb-3 mr-3 float-right">
+                Reset
+            </a>
+        </div>
+
+        <div>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.getId()}" width="8%"></td>
+                    <td th:text="${student.getName()}" width="20%"></td>
+                    <td th:text="${student.getEmail()}"width="32%"></td>
+                    <td width="10%">
+                        <!-- Add update button/link -->
+                        <a th:href=" @{/student/update( studentId = ${ student.getId() } ) } "
+                           class="btn btn-outline-info btn-sm">
+                            Update
+                        </a>
+                    </td>
+                    <td width="10%">
+                        <!-- Add Delete button/link -->
+                        <a th:href=" @{/student/delete( studentId = ${ student.getId() } ) } "
+                           class="btn btn-outline-danger btn-sm"
+                           onclick="if (!(confirm('Are you sure you want to delete this student?'))) return false">
+                            Delete
+                        </a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<div class="container">
+    <footer th:replace = "footer.html :: footer"></footer>
+</div>
+</body>
+</html>

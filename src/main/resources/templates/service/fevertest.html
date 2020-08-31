@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <!-- For adding Bootstrap in you HTML file -->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <script defer th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script defer th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <title>Fever Test</title>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="container">
+    <nav th:replace = "navbar.html :: navigation" ></nav>
+</div>
+
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h3>Enter temperature</h3>
+            <hr>
+            <form action="#" th:action="@{/fever/feverInput}" method="POST">
+
+                <!-- Input fever -->
+               <input type="text" th:name="inputNumber"
+                       class="form-control mb-4 col-12" placeholder="Temperature °C">
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-info col-4">Get result</button>
+            </form>
+
+        </div>
+        <div class="col-8">
+            <h3>Result</h3>
+            <hr>
+            <h4 th:text="${ resultFever }"></h4>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <!-- Add background -->
+
+
+    <!-- For adding Bootstrap in you HTML file -->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <script defer th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script defer th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <title>Thymeleaf - Demo</title>
+
+</head>
+<body>
+<!-- Navigation -->
+<div class="container">
+    <nav th:replace = "navbar.html :: navigation" ></nav>
+</div>
+
+<br>
+
+<div class="container">
+<div class="row">
+    <div class="col-6">
+        <article>
+            <h3>Grid classes</h3>
+            <hr>
+            <p>The Bootstrap 4 grid system has five classes:<br>
+                <br>
+                .col- (extra small devices - screen width less than 576px)<br>
+                .col-sm- (small devices - screen width equal to or greater than 576px)<br>
+                .col-md- (medium devices - screen width equal to or greater than 768px)<br>
+                .col-lg- (large devices - screen width equal to or greater than 992px)<br>
+                .col-xl- (xlarge devices - screen width equal to or greater than 1200px)</p>
+
+        </article>
+    </div>
+    <div class="col-6">
+        <h3>Nothing</h3>
+        <hr>
+
+    </div>
+</div>
+</div>
+
+<div class="container">
+    <footer th:replace = "footer.html :: footer"></footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <!-- For adding Bootstrap in you HTML file -->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <script defer th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script defer th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <title>Page footer</title>
+
+</head>
+<body>
+
+<footer th:fragment="footer" class="footer fixed-bottom">
+    <div class="container border-top-1 border-dark " style="background-color: white"  >
+        <span  class="text-muted text-center" >
+            [ Mattias Andersson ] <a href="mailto:neonithe@gmail.com"> [ neonithe@gmail.com ]</a>
+        </span>
+    </div>
+</footer>
+
+</body>
+</html>

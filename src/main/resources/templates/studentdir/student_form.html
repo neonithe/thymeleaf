@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <!-- For adding Bootstrap in you HTML file -->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <script defer th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script defer th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <title>Student form</title>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="container">
+    <nav th:replace = "navbar.html :: navigation" ></nav>
+</div>
+
+
+<br>
+
+    <!-- Content of web page -->
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+        <h3>Add student</h3>
+        <hr>
+
+        <form action="#" th:action="@{/student/save}" th:object="${student}" method="POST">
+
+            <!-- ID Hidden, added by DB -->
+            <input type="hidden" th:field="*{id}" th:method="GET"/>
+
+            <!-- Name -->
+            <input type="text" th:field="*{name}"
+                   class="form-control mb-4 col-12" placeholder="Name">
+
+            <!-- email -->
+            <input type="text" th:field="*{email}"
+                   class="form-control mb-4 col-12" placeholder="Email">
+
+            <button type="submit" class="btn btn-info col-4">Save</button>
+
+        </form>
+            </div>
+            <div class="col-8">
+                <h3>Info</h3>
+                <hr>
+                <p>Here you can add students to your database. Do not leave any fields empty.<br>
+                    <br>
+                    <hr>
+                    <h5>Database info</h5>
+                    Database name: thyme_student<br>
+                    User: root<br>
+                    Password: root<br></p>
+                <hr>
+                <h5>DB dir:</h5>
+                <p>jdbc:mysql://localhost:3306/thyme_student?&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Berlin</p>
+            </div>
+        </div>
+    </div>
+<div class="container">
+    <footer th:replace = "footer.html :: footer"></footer>
+</div>
+</body>
+</html>
