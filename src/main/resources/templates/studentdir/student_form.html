@@ -11,6 +11,9 @@
     <script defer th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script defer th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
+    <!-- Error Color -->
+    <style>.error {color:red}</style>
+
     <title>Student form</title>
 
 </head>
@@ -38,12 +41,18 @@
 
             <!-- Name -->
             <input type="text" th:field="*{name}"
-                   class="form-control mb-4 col-12" placeholder="Name">
+                   class="form-control mb-0 col-12" placeholder="Name">
 
+                    <!-- Name Error handling -->
+                     <p class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <br>
             <!-- email -->
             <input type="text" th:field="*{email}"
-                   class="form-control mb-4 col-12" placeholder="Email">
+                   class="form-control mb-1 col-12" placeholder="Email">
 
+                    <!-- Email Error handling -->
+                    <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            <br>
             <button type="submit" class="btn btn-info col-4">Save</button>
 
         </form>

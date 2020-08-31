@@ -1,8 +1,19 @@
 package se.lexicon.mattias.thymeleaf.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
+@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Table(name = "student")
 public class Student {
 
@@ -12,9 +23,13 @@ public class Student {
     @Column(name = "id")
     private int id;
 
+    @NotNull
+    @Size(min=2,max=20,message="Min 2 Max 20 characters")
     @Column(name = "name")
     private String name;
 
+    @NotEmpty(message = "Email cannot be empty")
+    @Email(regexp="^(.+)@(.+)$", message = "Invalid email pattern")
     @Column(name = "email")
     private String email;
 

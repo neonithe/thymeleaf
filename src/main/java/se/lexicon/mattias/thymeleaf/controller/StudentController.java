@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import se.lexicon.mattias.thymeleaf.model.Student;
 import se.lexicon.mattias.thymeleaf.service.StudentDAO;
 
 import javax.annotation.PostConstruct;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,8 +48,6 @@ public class StudentController {
     public String getAll(Model model){
 
         List<Student> students = dao.findAll();
-
-
         model.addAttribute("students", students);
 
         return "student_view.html";
@@ -68,8 +68,14 @@ public class StudentController {
         return "/studentdir/student_form.html";
     }
 
+    /** Functions Save, delete, update  ( Save with error handling )**/
+
     @PostMapping("/save")
-    public String save(@ModelAttribute("student") Student student){
+    public String save(@Valid @ModelAttribute("student") Student student, BindingResult errors){
+
+        if(errors.hasErrors()) {
+            return "/studentdir/student_form.html";
+        }
         // Save the student
         dao.save(student);
         // Redirect
@@ -98,6 +104,9 @@ public class StudentController {
         return "/studentdir/student_form.html";
     }
 
+
+
+
     /** Search for names / email **/
 
     @GetMapping("/search")
@@ -115,6 +124,9 @@ public class StudentController {
 
         return "search.html";
     }
+
+
+
 
     /** Sorting the list of students **/
 
