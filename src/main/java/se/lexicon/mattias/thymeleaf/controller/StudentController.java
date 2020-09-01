@@ -71,7 +71,7 @@ public class StudentController {
     /** Functions Save, delete, update  ( Save with error handling )**/
 
     @PostMapping("/save")
-    public String save(@Valid @ModelAttribute("student") Student student, BindingResult errors){
+    public String save(@Valid @ModelAttribute("student") Student student, BindingResult errors, Model model){
 
         if(errors.hasErrors()) {
             return "/studentdir/student_form.html";

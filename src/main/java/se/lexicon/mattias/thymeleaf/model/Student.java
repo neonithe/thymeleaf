@@ -11,9 +11,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
 @Table(name = "student")
 public class Student {
 
@@ -29,7 +26,7 @@ public class Student {
     private String name;
 
     @NotEmpty(message = "Email cannot be empty")
-    @Email(regexp="^(.+)@(.+)$", message = "Invalid email pattern")
+    @Email(regexp = "^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$", message = "Invalid email pattern") // regexp="^(.+)@(.+)$"
     @Column(name = "email")
     private String email;
 
